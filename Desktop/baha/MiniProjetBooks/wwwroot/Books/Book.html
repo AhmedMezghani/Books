@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="images/favicon.png" type="">
+    <title>Famms - Fashion HTML Template</title>
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+    <!-- font awesome style -->
+    <link href="../css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="../css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="../css/responsive.css" rel="stylesheet" />
+</head>
+<body class="sub_page">
+
+    <!-- inner page section -->
+    <section class="inner_page_head">
+        <div class="container_fuild">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <h3>Book Grid</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- end inner page section -->
+    <!-- product section -->
+    <section class="product_section layout_padding">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    <span>Books</span>
+                </h2>
+            </div>
+            <div class="row" id="books-container">
+
+            </div>
+            <!-- Add New Book button -->
+            <div class="add-book-button-container">
+                <button type="button" class="btn btn-primary" id="addBookButton">Add New Book</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="addAuthorDialog" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="height:620px;">
+                <div class="modal-header">
+                    <h5 class="modal-title">Top 10 Words</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addAuthorForm">
+                        <div class="form-group">
+                            <label for="authorName">Word</label>
+                            <input type="text" class="form-control" id="authorName" placeholder="enter a character string with at least 3 characters" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                    <div id="wordsTable">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Word</th>
+                                    <th scope="col">Occurrence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Table rows will be dynamically populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="addBookDialog" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="height:620px;">
+                <div class="modal-header">
+                    <h5 class="modal-title">New Book</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addAuthorForm">
+                        <div class="form-group">
+                            <label for="authorName">Word</label>
+                            <input type="text" class="form-control" id="authorName" placeholder="enter a character string with at least 3 characters" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                    <div id="wordsTable">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Word</th>
+                                    <th scope="col">Occurrence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Table rows will be dynamically populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../app.js"></script>
+
+    <script>
+        var currentAuthor;
+        var currentTitle;
+
+        function showDialog2(clickedDiv) {
+            var parentBox = $(clickedDiv).closest('.box');
+            var authorElement = parentBox.find('.detail-box h8');
+            var titleElement = parentBox.find('.detail-box h7');
+
+            currentAuthor = authorElement.text();
+            currentTitle = titleElement.text();
+
+            // Show the dialog
+            $("#addAuthorDialog").modal("show");
+        }
+
+        $(document).ready(function () {
+            $("#addAuthorForm").submit(function (event) {
+                event.preventDefault();
+                var authorName = $("#authorName").val();
+                if (authorName.trim() !== "") {
+                    // Use the global variables in getTopTenWords
+                    checkMatchingWord(currentAuthor, currentTitle, $("#authorName").val());
+                    $("#addAuthorDialog").modal("hide");
+                } else {
+                    alert("Author name cannot be empty");
+                }
+            });
+        });
+    </script>
+    <script>
+        document.getElementById('addBookButton').addEventListener('click', function () {
+            $('#addBookDialog').modal('show');
+        });
+    </script>
+
+</body>
+</html>

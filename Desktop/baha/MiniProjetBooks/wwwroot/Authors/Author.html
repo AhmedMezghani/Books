@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Sidebar</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+    <link href="../css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/responsive.css" rel="stylesheet" />
+</head>
+<body >
+
+            <section class="inner_page_head">
+                <div class="container_fuild">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="full">
+                                <h3>Authors</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="client_section layout_padding">
+                <div class="container">
+                    <div class="heading_container heading_center">
+                        <h2>Authors' Information</h2>
+                    </div>
+                    <div id="authorCarouselControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="box col-lg-10 mx-auto">
+                                    <div class="detail-box">
+                                        <h5>John Doe</h5>
+                                        <h6>Author</h6>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="box col-lg-10 mx-auto">
+                                    <div class="detail-box">
+                                        <h5>John Doe 2</h5>
+                                        <h6>Author2</h6>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel_btn_box">
+                            <a class="carousel-control-prev" href="#authorCarouselControls" role="button" data-slide="prev">
+                                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#authorCarouselControls" role="button" data-slide="next">
+                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <button id="addAuthorBtn" class="btn btn-primary">Add Author</button>
+                    <!-- Dialog for adding a new author -->
+                    <div id="addAuthorDialog" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Add New Author</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="addAuthorForm">
+                                        <div class="form-group">
+                                            <label for="authorName">Author Name</label>
+                                            <input type="text" class="form-control" id="authorName" placeholder="Enter author name" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Save Author</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+     
+    <script src="author.js"></script>
+
+</body>
+</html>
