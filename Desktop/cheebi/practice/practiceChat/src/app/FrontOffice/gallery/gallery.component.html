@@ -1,0 +1,49 @@
+<ngb-carousel
+	#carousel
+	[interval]="100000"
+>
+      <ng-template ngbSlide *ngFor="let image of productImages" let-i="index">
+
+			<div class="carousel-caption">
+				<h3>My slide {{ i + 1 }} title</h3>
+			</div>
+			<a  target="_blank" rel="nofollow noopener noreferrer">
+				<div class="picsum-img-wrapper">
+					<img [src]="image.url" alt="My image {{ i + 1 }} description" />
+				</div>
+			</a>
+		</ng-template>
+
+</ngb-carousel>
+
+<!--
+<div class="gallery-container">
+
+  <div class="product-gallery__featured">
+    <owl-carousel-o [options]="{ items: 3, dots: false, margin: 8, autoWidth: false }" #owlCar>
+      <ng-container *ngFor="let image of productImages">
+        <ng-template carouselSlide [id]="image.url">
+          <img [src]="image.url" class="featured-image">
+        </ng-template>
+
+      </ng-container>
+
+    </owl-carousel-o>
+
+  </div>
+
+  <div class="product-gallery__carousel">
+    <owl-carousel-o [options]="{ items: 3, dots: false, margin: 5, autoWidth: true }">
+      <ng-container *ngFor="let image of productImages; let i = index">
+        <ng-template carouselSlide [id]="image.url + i">
+          <a (click)="owlCar.to(image.url); changeimage(image.url + i)">
+            <img [src]="image.url" class="carousel-image"
+                 [ngClass]="{'product-gallery__carousel-item--active': selectedImage === image.url + i || (i == 0 && !selectedImage)}">
+          </a>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+
+</div>
+  -->

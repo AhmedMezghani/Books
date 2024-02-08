@@ -1,0 +1,22 @@
+<!-- Updated HTML -->
+<header>
+  <div class="home-icon" [routerLink]="['']" style="cursor: pointer;">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12 2L1 12h3v8h6v-6h4v6h6v-8h3z"/>
+    </svg>
+  </div>
+  <nav>
+    <ul>
+
+      <li *ngIf="!isAuthenticated"><a [routerLink]="['/login']" style="cursor: pointer;">Login</a></li>
+      <li *ngIf="!isAuthenticated"><a [routerLink]="['/register']" style="cursor: pointer;">Sign-Up</a></li>
+
+      <li *ngIf="isAuthenticated && getUserRole === 'USER'"><a [routerLink]="['/profile']" style="cursor: pointer;">Profile</a></li>
+      <li *ngIf="isAuthenticated && getUserRole === 'USER'"><a [routerLink]="['/chat-room']" style="cursor: pointer;">Chat Room</a></li>
+
+      <li *ngIf="isAuthenticated"><a (click)="onLogout()" style="cursor: pointer;">Logout</a></li>
+
+    </ul>
+  </nav>
+</header>

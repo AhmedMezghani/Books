@@ -1,0 +1,63 @@
+/* home.component.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); /* Import the Poppins font */
+
+.chat-room {
+  background-image: url('../../../assets/background.jpg'); /* Replace with the path to your image */
+  background-size: cover;
+  background-position: center;
+  color: #2c3e50; /* Set text color to a light gray for better visibility on the background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 100%;
+  margin: 50px auto;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif; /* Use the Poppins font for a modern look */
+}
+
+.chat-room h1 {
+  color: #2980b9; /* Set a different color for the heading */
+  font-size: 3em; /* Increase the font size */
+  font-style: italic; /* Italicize the heading */
+  letter-spacing: 2px; /* Add some letter spacing for a unique look */
+}
+
+.chat-room p {
+  color: #34495e; /* Set a slightly darker gray for the paragraphs */
+  font-size: 1.5em; /* Adjust the font size */
+  line-height: 1.8; /* Set line height for better readability */
+}
+
+.create-account-button {
+  display: inline-block;
+  background-color: #3498db; /* Use the same color as before for the button */
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.5em;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.create-account-button:hover {
+  background-color: #2980b9;
+  color: #fff;
+}
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 600px) {
+  .chat-room h1 {
+    font-size: 2em; /* Adjust the font size for smaller screens */
+  }
+
+  .chat-room p {
+    font-size: 1.2em; /* Adjust the font size for smaller screens */
+    line-height: 1.5; /* Adjust line height for smaller screens */
+  }
+
+  .create-account-button {
+    padding: 10px 20px; /* Adjust padding for smaller screens */
+    font-size: 1.2em; /* Adjust the font size for smaller screens */
+  }
+}

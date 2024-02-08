@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title"></h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <div class="overlay">
+    <div class="black-rectangle" (mousedown)="onMouseDown($event)"
+    (mouseup)="onMouseUp()"
+    (mousemove)="onMouseMove($event)"
+    (touchstart)="onTouchStart($event)"
+       (touchend)="onTouchEnd()"
+       (touchmove)="onTouchMove($event)"
+    [style.background-image]="'url(' + image_src + ')'" [ngStyle]="{'background-size.%': backgroundSize ,'background-position': backgroundPosition}"
+  >
+    </div>
+  </div>
+
+  <mat-slider [min]="defaultBackgroundSize" [max]="defaultBackgroundSize * 2" step="1" discrete
+    [(ngModel)]="backgroundSize" (input)="onSliderChange($event)" (mouseup)="onSliderMouseUp()">
+  <input matSliderThumb>
+</mat-slider>
+
+<button type="button" class="btn btn-primary" (click)="onModifyClick()">Modify</button>
+</div>

@@ -1,0 +1,129 @@
+
+<div class="container-fluid " style="min-height: 600px;">
+  <div class="row justify-content-center">
+    <div class="col-xl-12 mt-5">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">My account</h3>
+            </div>
+            <div class="col-4 text-right">
+              <a (click)="saveProfile()" class="btn btn-sm btn-primary">Save</a>
+            </div>
+          </div>
+        </div>
+        <div class="circle-container align-self-center text-center d-flex flex-column" (click)="openFileInput()">
+          <div class="hoverImage">
+            <img [src]="this.imageSrc || 'assets/Images/man.png'" alt="Image" id="imagePreview" />
+          <div class="centered-text">Modify image cover</div>
+          </div>
+
+          <button *ngIf="this.imageSrc" (click)="removeImage($event)" class="btn btn-sm btn-danger mt-2 h-100">Remove Photo</button>
+
+        </div>
+
+
+        <input type="file" id="fileInput" #fileInput accept="image/*" (change)="previewImage(fileInput)" style="display: none;" />
+
+        <div class="card-body" *ngIf="userInformation">
+          <form [formGroup]="userForm" >
+            <h6 class="heading-small text-muted mb-4">User information</h6>
+            <div class="pl-lg-4">
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">First name</label>
+                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" formControlName="firstname">
+                    <div *ngIf="userForm.get('firstname')!.hasError('required')" class="text-danger">firstname is required</div>
+
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Last name</label>
+                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" formControlName="lastname">
+                    <div *ngIf="userForm.get('lastname')!.hasError('required')" class="text-danger">lastname is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+
+                <div class="col-lg-6" >
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-email">Email address</label>
+                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com" formControlName="email" >
+                    <div *ngIf="userForm.get('email')!.hasError('required')" class="text-danger">email is required</div>
+                    <div *ngIf="userForm.get('email')?.hasError('email')" class="text-danger">Invalid email format</div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-phone">Country Code</label>
+                    <select id="country-code" class="form-control form-control-alternative" formControlName="countryCode">
+                      <option *ngFor="let country of countryOptions" [value]="country.value">{{ country.label }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-phone">Phone</label>
+                    <input type="text" id="input-Phone" class="form-control form-control-alternative" placeholder="XXXXXXXX" value="XXXXXXXX" formControlName="phone">
+                    <div *ngIf="userForm.get('phone')!.hasError('invalidPhone')" class="text-danger">Invalid Phone format</div>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Contact information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Address</label>
+                    <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" type="text" formControlName="address">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-city">City</label>
+                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" formControlName="city">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Country</label>
+                    <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" formControlName="country">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Postal code</label>
+                    <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code" formControlName="codePostal">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Description -->
+            <h6 class="heading-small text-muted mb-4">About me</h6>
+            <div class="pl-lg-4">
+              <div class="form-group">
+                <label>About Me</label>
+                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..." formControlName="aboutme"></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

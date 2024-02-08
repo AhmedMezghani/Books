@@ -1,0 +1,68 @@
+
+  <div class="container">
+    <h1>Please Sign Up</h1>
+    <form (ngSubmit)="register()">
+      <div class="form-field" [class.error-field]="isInvalidField('firstname')">
+        <label for="firstname" [class.error-label]="isInvalidField('firstname')">Prénom:
+          <span class="error-indicator" > *</span>
+        </label>
+        <input type="text" id="firstname" name="firstname" required [(ngModel)]="registerRequest.firstname">
+      </div>
+
+      <div class="form-field" [class.error-field]="isInvalidField('lastname')">
+        <label for="lastname" [class.error-label]="isInvalidField('lastname')">Nom:
+          <span class="error-indicator" > *</span>
+        </label>
+        <input type="text" id="lastname" name="lastname" required [(ngModel)]="registerRequest.lastname">
+      </div>
+
+      <div class="form-field" [class.error-field]="isInvalidField('role')">
+        <label for="role" [class.error-label]="isInvalidField('role')">Role:
+        <span class="error-indicator" > *</span>
+        </label>
+        <select id="role" name="role" required [(ngModel)]="registerRequest.role">
+          <option value="MANAGER">MANAGER</option>
+          <option value="USER">USER</option>
+          <option value="ADMIN">ADMIN</option>
+        </select>
+
+      </div>
+
+      <div class="form-field" [class.error-field]="isInvalidField('email')">
+        <label for="email" [class.error-label]="isInvalidField('email')">Email:
+          <span class="error-indicator" > *</span>
+        </label>
+        <input type="text" id="email" name="email" required [(ngModel)]="registerRequest.email">
+      </div>
+
+      <div class="form-field" [class.error-field]="isInvalidField('password')">
+        <label for="password" [class.error-label]="isInvalidField('password')">Mot de passe:
+          <span class="error-indicator" > *</span>
+        </label>
+        <input type="password" id="password" name="password" required [(ngModel)]="registerRequest.password">
+        <div class="password-note">
+          Conseils pour le mot de passe :
+          <ul>
+            <li>Entre 8 et 15 caractères de longueur</li>
+            <li>Au moins une lettre majuscule</li>
+            <li>Au moins une lettre minuscule</li>
+            <li>Au moins un caractère spécial (par exemple, ! # $ % ^ & *)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-field" [class.error-field]="isInvalidPasswordRecheck()">
+        <label for="passwordrecheck" [class.error-label]="isInvalidPasswordRecheck()">Re-entrez le mot de passe:
+          <span class="error-indicator" > *</span>
+        </label>
+        <input type="password" id="passwordrecheck" name="passwordrecheck" required [(ngModel)]="passwordrecheck"     (paste)="preventPaste($event)"
+        >
+      </div>
+
+
+
+      <button type="submit">S'inscrire</button>
+      <label class="error-message" *ngIf="errorMessage">{{ errorMessage }}</label>
+
+    </form>
+  </div>

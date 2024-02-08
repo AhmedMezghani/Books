@@ -1,0 +1,57 @@
+<h1>Hello Boss</h1>
+<!---->
+<h2>List de users:</h2>
+
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard /</span> Show users</h4>
+      <!-- Basic Bootstrap Table -->
+      <div class="card">
+        <h5 class="card-header">Table Basic</h5>
+        <div class="table-responsive text-nowrap">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Id</th>
+              <th>
+                <span style="margin-right: 30px;">Name</span>
+                <span class="tf-icons bx bx-up-arrow-alt btn-outline-primary" (click)="onSortChange('lastname,asc')"></span>
+                <span class="tf-icons bx bx-down-arrow-alt btn-outline-info" (click)="onSortChange('lastname,desc')"></span>
+              </th>
+              <th>
+                <span style="margin-right: 120px;">Email</span>
+                <span class="tf-icons bx bx-up-arrow-alt btn-outline-primary" (click)="onSortChange('email,asc')"></span>
+                <span class="tf-icons bx bx-down-arrow-alt btn-outline-info"(click)="onSortChange('email,desc')"></span></th>
+              <th>
+                <span style="margin-right: 10px;">Role</span>
+                <span class="tf-icons bx bx-up-arrow-alt btn-outline-primary" (click)="onSortChange('role,asc')"></span>
+                <span class="tf-icons bx bx-down-arrow-alt btn-outline-info"(click)="onSortChange('role,desc')"></span></th>
+
+
+
+            </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+            <tr *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: pageNumber }" >
+              <td><span class="badge badge-center rounded-pill bg-label-primary">{{user.id}}</span></td>
+              <td>{{user.lastname}} {{user.firstname}}</td>
+              <td>{{user.email}}</td>
+              <td><span [ngClass]="{' text-danger ': user.role==='USER',
+                                    ' text-primary': user.role==='ADMIN',
+                                    ' text-warning': user.role==='MANAGER'
+                                     }">{{user.role}}</span></td>
+
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!--/ Basic Bootstrap Table -->
+
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+       <!-- <pagination-controls (pageChange)="pageNumber = $event" ></pagination-controls>-->
+      </div>
+    </div>
+  </div>

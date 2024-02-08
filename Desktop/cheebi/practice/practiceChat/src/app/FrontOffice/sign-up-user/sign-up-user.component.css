@@ -1,0 +1,118 @@
+/* styles.scss */
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url('../../../assets/background.jpg'); /* Replace with the path to your image */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  margin: 0;
+  color: #fff; /* Set text color to white for better visibility on the background */
+}
+.container {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    text-align: center;
+    color: #1da1f2;
+  }
+
+  form {
+    width: 100%; /* Occupy the full width of the container */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    div {
+      margin-bottom: 15px;
+      width: 100%; /* Occupy the full width of the container */
+      label {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #1da1f2;
+        &.error-label {
+          color: red;
+        }
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        border-color: #d4d9db; /* Default border color */
+
+      }
+
+      .error-indicator {
+        color: red;
+
+        transform: translateY(-50%);
+      }
+
+      .error-field {
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+          border-color: red; /* Border color when there's an error */
+        }
+      }
+      .password-note {
+        font-size: 12px;
+        color: #666; /* Adjust the color as needed */
+        margin-top: 5px;
+      }
+      select {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        appearance: none;
+      }
+    }
+
+    button[type="submit"] {
+      width: 50%;
+      padding: 12px;
+      background-color: #1da1f2;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #0c7bb3;
+      }
+    }
+
+    label.error-message {
+      color: red;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+  }
+
+}
+::ng-deep .failed-snackbar{
+  background-color:brown;
+  color:white;
+}
+::ng-deep .success-snackbar{
+  background-color:Green;
+  color:white;
+}

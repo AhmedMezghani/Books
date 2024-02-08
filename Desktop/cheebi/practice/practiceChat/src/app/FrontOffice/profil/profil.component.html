@@ -1,0 +1,83 @@
+
+<div class="container-fluid " style="min-height: 600px; ">
+  <div class="row justify-content-center">
+    <div class="mt-5 mb-5">
+      <div class="card card-profile shadow">
+        <div class="row justify-content-center">
+          <div class="col-lg-3 order-lg-2">
+            <div class="card-profile-image">
+              <a href="javascript:void(0)">
+                <img src="assets/Images/man.png" class="rounded-circle">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+          <div class="d-flex justify-content-between">
+            <a [routerLink]="['/profile/modify']" class="btn btn-sm btn-default float-right">Modify</a>
+
+            <a href="javascript:void(0)" class="btn btn-sm btn-info ">Settings</a>
+          </div>
+        </div>
+        <div class="card-body pt-0 pt-md-4">
+          <div class="row">
+            <div class="col">
+              <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                <div>
+                  <span class="heading">22</span>
+                  <span class="description">Friends</span>
+                </div>
+                <div>
+                  <span class="heading">10</span>
+                  <span class="description">Photos</span>
+                </div>
+                <div>
+                  <span class="heading">89</span>
+                  <span class="description">Comments</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+
+            <h3>
+              {{ userInformation.firstname }} {{ userInformation.lastname }}<span class="font-weight-light">, 27</span>
+            </h3>
+            <div class="h5 font-weight-300" *ngIf="userInformation.address">
+              <i class="ni location_pin mr-2"></i>{{ userInformation.address }}
+            </div>
+
+            <ng-container *ngIf="userInformation?.gender === 'male' && userInformation?.gender !== null; else femaleBlock">
+              <img src="../../../assets/Images/malesymbole.png" alt="Male Symbol" class="gender-symbol-right-img" />
+            </ng-container>
+            <ng-template #femaleBlock>
+              <ng-container *ngIf="userInformation?.gender === 'female' && userInformation?.gender !== null; else noSymbol">
+                <img src="../../../assets/Images/femalesymbole.png" alt="Female Symbol" class="gender-symbol-right-img" />
+              </ng-container>
+              <ng-template #noSymbol>
+              </ng-template>
+            </ng-template>
+
+            <span class="material-icons" *ngIf="userInformation?.gender">{{ userInformation.gender}}</span>
+
+            <ng-container *ngIf="userInformation?.gender === 'male' && userInformation?.gender !== null; else femaleBlock2">
+              <img src="../../../assets/Images/malesymbole.png" alt="Male Symbol" class="gender-symbol-left-img" />
+            </ng-container>
+            <ng-template #femaleBlock2>
+              <ng-container *ngIf="userInformation?.gender === 'female' && userInformation?.gender !== null; else noSymbol">
+                <img src="../../../assets/Images/femalesymbole.png" alt="Female Symbol" class="gender-symbol-left-img" />
+              </ng-container>
+              <ng-template #noSymbol>
+              </ng-template>
+            </ng-template>
+
+            <hr class="my-4" />
+            <p *ngIf="userInformation?.aboutme">{{ userInformation.aboutme}}</p>
+            <app-gallery style="width: 50%;"></app-gallery>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
